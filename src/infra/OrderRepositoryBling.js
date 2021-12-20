@@ -9,8 +9,19 @@ class OrderRepositoryBling {
     }
 
     async createOrderIntegration(orderXML){
-        const response = await blingPostApi.post({ params: { xml: orderXML }});
-        console.log(response);
+        try {
+            await new Promise((resolve)=>setTimeout(() => {
+                resolve();
+            }, 350));
+
+            const response = await blingPostApi.post('https://bling.com.br/Api/v2/pedido/json/', null, { params: {
+                xml: orderXML
+            }});
+
+            return response.data.retorno;
+        } catch(err) {
+            console.log(err);
+        }
     }
 }
 

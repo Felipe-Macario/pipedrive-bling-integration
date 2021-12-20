@@ -12,15 +12,16 @@ class CreateOrderIntegration {
     async createOrderIntegration(){
         const deals = await this.dealRepository.getWonDeal();
 
-        const orders = JsonDealToXMLAdapter.create(deals);
+        const ordersXML = JsonDealToXMLAdapter.create(deals);
 
         let createdOrders = 0;
 
-        orders.forEach(element => {
-            await orderRepository.createOrderIntegration(element);
-            console.log(element);
-            // returning positive outcome, createdOrders++
-        }); 
+        for(const order of ordersXML){
+            const response = await this.orderRepository.createOrderIntegration(order);
+
+            if (typeof response.pedidos !== "undefined")
+                createdOrders++;
+        }
 
         return createdOrders;
     }

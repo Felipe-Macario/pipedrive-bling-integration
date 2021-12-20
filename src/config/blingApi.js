@@ -8,7 +8,7 @@ const blingGetApi = axios.create({
 });
 
 const blingPostApi = axios.create({
-    baseURL: 'https://bling.com.br/Api/v2/pedido/json/',
+    headers: {'Content-Type': 'text/xml'},
     params: {
         apikey: process.env.BLING_API_KEY
     }

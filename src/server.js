@@ -3,8 +3,6 @@ const express = require('express');
 const dotenv = require('dotenv')
 dotenv.config()
 
-// import './database/connection'
-
 const routes = require('./routes');
 const httpErrorHandler = require('./errors/HttpErrorHandler');
 

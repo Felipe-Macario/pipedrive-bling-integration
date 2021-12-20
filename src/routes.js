@@ -44,11 +44,9 @@ router.get('/orders', async function(req, res, next) {
 router.get('/orders/integration', async function(req, res, next) {
     try {
         const orderController = new OrderController();
-        await orderController.CreateOrderIntegration();
+        const ordersCreated = await orderController.CreateOrderIntegration();
 
-        const number = 0;
-
-        return res.status(201).json({ message: `The number of ${number} new orders have been created with success.` });
+        return res.status(201).json({ message: `The number of ${ordersCreated} new orders have been created with success.` });
     } catch (e) {
         next(e);
     }

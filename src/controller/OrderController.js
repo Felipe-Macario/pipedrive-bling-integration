@@ -6,8 +6,8 @@ const GetOrder = require('../useCases/GetOrder');
 
 class OrderController {
     async GetOrder() {
-        const orderRepository = new OrderRepositoryBling();
-        const getOrder = new GetOrder(orderRepository);
+        const orderRepositoryBling = new OrderRepositoryBling();
+        const getOrder = new GetOrder(orderRepositoryBling);
         const orders = getOrder.getOrder();
 
         return orders;
@@ -15,7 +15,8 @@ class OrderController {
 
     async CreateOrderIntegration() {
         const dealRepositoryPipedrive = new DealRepositoryPipedrive();
-        const createOrderIntegration = new CreateOrderIntegration(dealRepositoryPipedrive);
+        const orderRepositoryBling = new OrderRepositoryBling();
+        const createOrderIntegration = new CreateOrderIntegration(dealRepositoryPipedrive, orderRepositoryBling);
 
         const response = await createOrderIntegration.createOrderIntegration();
 
