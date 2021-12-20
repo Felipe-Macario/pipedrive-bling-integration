@@ -1,10 +1,10 @@
 class Order{
-    constructor(clientId, clientName, itemDescription, itemQuantity, itemValue){
-        this.clientId = clientId;
+    constructor(id, date, clientName, itemDescription, value){
+        this.id = id;
+        this.date = date;
         this.clientName = clientName;
         this.itemDescription = itemDescription;
-        this.itemQuantity = itemQuantity;
-        this.itemValue = itemValue;
+        this.value = value;
     }
 }
 

@@ -7,6 +7,7 @@ class JsonDealToXMLAdapter{
         deals.forEach(element => {
             const order = {
                 pedido: {
+                    data: element.wonDate,
                     cliente: {
                         id: element.id,
                         nome: element.personName

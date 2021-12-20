@@ -1,9 +1,15 @@
 const { blingGetApi, blingPostApi } = require('../config/blingApi');
+const OrderAdapter = require('../adapters/OrderAdapter');
 
 class OrderRepositoryBling {
     async getOrder(){
         const response = await blingGetApi.get();
-        const orders = response.data;
+        const data = response.data.retorno.pedidos;
+
+        if (!data)
+            throw new Error("Unable to find a registered order");
+            
+        const orders = OrderAdapter.create(data);
 
         return orders;
     }

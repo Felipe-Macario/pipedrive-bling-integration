@@ -5,7 +5,8 @@ class DealAdapter{
         const result = [];
 
         deals.forEach(element => {
-            result.push(new Deal(element.id, element.person_name, element.status, element.title, element.value, element.won_time));
+            const formatedDate = element.won_time !== null ? new Date(element.won_time + "Z").toLocaleDateString("pt-BR") : element.won_time;
+            result.push(new Deal(element.id, element.person_name, element.status, element.title, element.value, formatedDate));
         });
 
         return result;
